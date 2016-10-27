@@ -4,41 +4,30 @@ Template.Preload = function() {
 };
 
 Template.Preload.prototype = {
-    Preload: function() {
-        this.preload = this.add.sprite(this.game.world.centerX, this.game.world.centerY+ 128, "preloadBar");
-        this.preload.anchor.setTo(0.5);
+    
+    preload: function() {
+        this.preloadbar = this.add.sprite(this.game.world.centerX, this.game.world.centerY+ 128, "preloadBar");
+        console.log("preloadbar is : " + this.preloadbar);
+        this.preloadbar.anchor.setTo(0.5);
         
-        this.load.setpreloadSprite(this.preloadBar);
+        this.load.setPreloadSprite(this.preloadbar);
         
         // here you load all the game images and what not
         
 
-       
+        this.load.image('peach', "assests/images/peach.gif");
+         this.load.image("logo", "assests/images/logo-fb.png");
         
-        //sprite hseets are dofferent
-        //(monicer, path,width og eaWch image, heigh of image, how many in sprite sheet
-       
-        
-        
-        // now lets load music
-        // (monicer,[array of music so that web browser will decide which to play)
-        
-    
-        
-        // loading bitmap fonts
-        this.load.onLoadComplete.add(this.onLoadComplete, this);
-       
         
     },
     create: function() {
-        console.log("preload bar is: "+this.preloadBar);
-        this.preloadBar.cropEnabled = true;   
+        console.log("preload bar is: "+this.preloadbar);
+        this.preloadbar.cropEnabled = true;   
     },
     
     update: function() {
-        if(this.ready===true){
-            this.state.start('MainMenu');
-        }
+        console.log("about to go to to main menu")
+       this.state.start('MainMenu');
     },
     
     onLoadComplete: function(){
